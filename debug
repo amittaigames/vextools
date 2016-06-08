@@ -1,0 +1,21 @@
+#!/bin/bash
+
+echo "BUILDING FOR DEBUG"
+
+last=$(gdate +%s%N)
+
+gcc -Wall -g test.c -o test
+
+ret=$?
+
+now=$(gdate +%s%N)
+
+let "diff = ($now - $last)/1000000"
+
+if [ $ret -eq 0 ]
+then
+	echo "Build successful"
+	echo "Build time: $diff milliseconds"
+else
+	echo "Build failed"
+fi
