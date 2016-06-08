@@ -13,5 +13,6 @@
 #include "vex_str.h"
 #include "vex_file.h"
 #include "vex_math.h"
+#include "vex_io.h"
 
 #endif // VEX_H

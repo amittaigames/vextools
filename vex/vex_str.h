@@ -44,6 +44,9 @@ char* vex_string_append(char* str, char* app);
 // Prepend one string to another
 char* vex_string_prepend(char* str, char* app);
 
+// Convert int to string
+char* vex_string_from_int(int num);
+
 //
 //
 // IMPLEMENTATION
@@ -210,6 +213,12 @@ char* vex_string_prepend(char* str, char* app) {
 	}
 
 	return x;
+}
+
+char* vex_string_from_int(int num) {
+	char* str = (char*)malloc(16);
+	sprintf(str, "%d", num);
+	return str;
 }
 
 #endif // VEX_STR_H
