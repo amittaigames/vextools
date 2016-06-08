@@ -38,6 +38,12 @@ char* vex_string_replace(char* str, char original, char replace);
 // Check if two strings equal
 int vex_string_equals(char* a, char* b);
 
+// Append one string to another
+char* vex_string_append(char* str, char* app);
+
+// Prepend one string to another
+char* vex_string_prepend(char* str, char* app);
+
 //
 //
 // IMPLEMENTATION
@@ -170,6 +176,40 @@ int vex_string_equals(char* a, char* b) {
 	}
 
 	return equals;
+}
+
+char* vex_string_append(char* str, char* app) {
+	int strLength = vex_string_length(str);
+	int appLength = vex_string_length(app);
+	int size = strLength + appLength;
+
+	char* x = (char*)malloc(sizeof(char) * size);
+
+	vex_string_copy(str, x);
+	int a = 0;
+	for (int i = strLength; i < size; i++) {
+		x[i] = app[a];
+		a++;
+	}
+
+	return x;
+}
+
+char* vex_string_prepend(char* str, char* app) {
+	int strLength = vex_string_length(str);
+	int appLength = vex_string_length(app);
+	int size = strLength + appLength;
+
+	char* x = (char*)malloc(sizeof(char) * size);
+
+	vex_string_copy(app, x);
+	int a = 0;
+	for (int i = appLength; i < size; i++) {
+		x[i] = str[a];
+		a++;
+	}
+
+	return x;
 }
 
 #endif // VEX_STR_H

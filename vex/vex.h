@@ -11,5 +11,6 @@
 #define VEX_H
 
 #include "vex_str.h"
+#include "vex_file.h"
 
 #endif // VEX_H
