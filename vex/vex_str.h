@@ -9,6 +9,10 @@
 #ifndef VEX_STR_H
 #define VEX_STR_H
 
+#ifndef VEX_MAX_CONVERSION
+	#define VEX_MAX_CONVERSION 16
+#endif
+
 #include <stdlib.h>
 
 // Copy string
@@ -46,6 +50,12 @@ char* vex_string_prepend(char* str, char* app);
 
 // Convert int to string
 char* vex_string_from_int(int num);
+
+// Convert float to string
+char* vex_string_from_float(float num);
+
+// Get hex string from int
+char* vex_string_hex_from_int(int num);
 
 //
 //
@@ -216,8 +226,20 @@ char* vex_string_prepend(char* str, char* app) {
 }
 
 char* vex_string_from_int(int num) {
-	char* str = (char*)malloc(16);
+	char* str = (char*)malloc(VEX_MAX_CONVERSION);
 	sprintf(str, "%d", num);
+	return str;
+}
+
+char* vex_string_from_float(float num) {
+	char* str = (char*)malloc(VEX_MAX_CONVERSION);
+	sprintf(str, "%3.2f", num);
+	return str;
+}
+
+char* vex_string_hex_from_int(int num) {
+	char* str = (char*)malloc(VEX_MAX_CONVERSION);
+	sprintf(str, "x%04x", num);
 	return str;
 }
 
