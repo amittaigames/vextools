@@ -17,6 +17,9 @@
 // Read entire file into buffer
 char* vex_file_read_all(char* fName);
 
+// Read entire file and return lines
+char** vex_file_read_lines(char* fName);
+
 // Check for file extension in name
 int vex_file_has_extension(char* fName, char* ext);
 
@@ -43,6 +46,12 @@ char* vex_file_read_all(char* fName) {
 	fclose(file);
 
 	return buf;
+}
+
+char** vex_file_read_lines(char* fName) {
+	char* buf = vex_file_read_all(fName);
+	char** split = vex_string_split(buf, '\n');
+	return split;
 }
 
 int vex_file_has_extension(char* fName, char* ext) {
