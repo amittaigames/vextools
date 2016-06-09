@@ -14,6 +14,7 @@
 #endif
 
 #include <stdlib.h>
+#include <stdio.h>
 
 // Copy string
 void vex_string_copy(char* src, char* dest);

@@ -25,6 +25,9 @@ void vex_println(char* fmt, ...);
 // Print error to the console
 void vex_print_err(char* fmt, ...);
 
+// Print error to console with new line
+void vex_println_err(char* fmt, ...);
+
 //
 //
 // IMPLEMENTATION
