@@ -23,6 +23,12 @@ char** vex_file_read_lines(char* fName);
 // Check for file extension in name
 int vex_file_has_extension(char* fName, char* ext);
 
+// Create a new file
+void vex_file_create(char* fName);
+
+// Write to file
+void vex_file_write(char* fName, char* data);
+
 //
 //
 // IMPLEMENTATION
@@ -63,6 +69,16 @@ int vex_file_has_extension(char* fName, char* ext) {
 	} else {
 		return 0;
 	}
+}
+
+void vex_file_create(char* fName) {
+	vex_file_write(fName, "");
+}
+
+void vex_file_write(char* fName, char* data) {
+	FILE* file = fopen(fName, "w");
+	fwrite(data, 1, vex_string_length(data), file);
+	fclose(file);
 }
 
 #endif // VEX_FILE_H
